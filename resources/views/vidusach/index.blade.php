@@ -8,6 +8,7 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
+
         .book img {
             width: 100%;
             height: 200px;
@@ -16,13 +17,13 @@
     </style>
     <div class="list-book">
         @foreach($data as $row)
-            <div class="book">
-                <a href="{{ url('sach/chitiet/'.$row->id) }}">
-                    <img src="{{ asset('hinh/image/'.$row->file_anh_bia) }}">
-                    <b>{{ $row->tieu_de }}</b><br>
-                    <i>{{ number_format($row->gia_ban,0,",",".") }} đ</i>
-                </a>
-            </div>
+        <div class="book">
+            <a href="{{ url('sach/chitiet/'.$row->id) }}">
+                <img src="{{ asset('hinh/book_image/'.$row->file_anh_bia) }}">
+                <b>{{ $row->tieu_de }}</b><br>
+                <i>{{ number_format($row->gia_ban,0,",",".") }} đ</i>
+            </a>
+        </div>
         @endforeach
     </div>
 </x-book-layout>
