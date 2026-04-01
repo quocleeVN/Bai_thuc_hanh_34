@@ -160,3 +160,16 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
+
+//Trang quan ly sach 
+Route::get('/book/list', 'App\Http\Controllers\BookController@booklist')->middleware('auth')->name("booklist");
+
+//Them sua xoa sach
+Route::get('/book/create', 'App\Http\Controllers\BookController@bookcreate')
+    ->middleware('auth')->name("bookcreate");
+Route::get('/book/edit/{id}', 'App\Http\Controllers\BookController@bookedit')
+    ->middleware('auth')->name("bookedit");
+Route::post('/book/save/{action}', 'App\Http\Controllers\BookController@booksave')
+    ->middleware('auth')->name("booksave");
+Route::post('/book/delete', 'App\Http\Controllers\BookController@bookdelete')
+    ->middleware('auth')->name("bookdelete");
