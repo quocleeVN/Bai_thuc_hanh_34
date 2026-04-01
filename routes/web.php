@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [BookController::class, 'book']);
 
 Route::get('hello', 'App\Http\Controllers\ViDuController@hello');
 
@@ -150,3 +148,15 @@ Route::get('/sach', [BookController::class, 'book']);
 Route::get('/sach/theloai/{id}', [BookController::class, 'theloai']);
 
 Route::get('/sach/chitiet/{id}', [ChiTietSachController::class, 'show'])->name('book.detail');
+
+//BTH 3
+Route::get('/accountpanel', 'App\Http\Controllers\AccountController@accountpanel')->middleware('auth')->name("account");
+
+Route::post('/saveaccountinfo', 'App\Http\Controllers\AccountController@saveaccountinfo')->middleware('auth')->name('saveinfo');
+
+//
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';
