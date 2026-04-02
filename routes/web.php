@@ -162,6 +162,7 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 
+
 //Trang quan ly sach 
 Route::get('/book/list', 'App\Http\Controllers\BookController@booklist')->middleware('auth')->name("booklist");
 
@@ -182,3 +183,5 @@ Route::post('/cart/add', 'App\Http\Controllers\BookController@cartadd')->name('c
 Route::post('/cart/delete', 'App\Http\Controllers\BookController@cartdelete')->name('cartdelete');
 Route::post('/order/create', 'App\Http\Controllers\BookController@ordercreate')
     ->middleware('auth')->name('ordercreate');
+
+Route::get('/testemail', 'App\Http\Controllers\ViDuController@testemail');
